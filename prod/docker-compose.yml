@@ -10,13 +10,11 @@ services:
       test: rabbitmq-diagnostic check_port_connectivity
       interval: 10s
       timeout: 5s
-      retries: 10s
+      retries: 10
       start_period: 5s
     extends:
       file: common-config.yml
       service: network-deploy-services
-
-
   accounts:
     image: 786306/accounts
     container_name: "accounts-ms"
@@ -44,7 +42,7 @@ services:
       test: "curl --fail --silent localhost:8071/actuator/health/readiness | grep UP || exit 1"
       interval: 10s
       timeout: 5s
-      retries: 10s
+      retries: 10
       start_period: 10s
     extends:
       file: common-config.yml
